@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/jquery-ean13/dist/jquery-ean13.js"></script>
+
+    <script>
+        $(function(){
+            $("#barcode").EAN13("739328486274");
+        })
+    </script>
+</head>
+<body class="container-fluid">
+    <div class=" card m-2 p-2" style="width: 200px;">
+        <img src="/assets/img/Chicken Longer Burger & 2 Strips Combo.jpg" class="card-img-top">
+        <div class="card-header">
+            <canvas id="barcode" width="150px" height="50px">
+
+            </canvas>
+        </div>
+        <div class="card-footer">
+            Burger & 2 Strips Combo
+        </div>
+    </div>    
+</body>
+</html>

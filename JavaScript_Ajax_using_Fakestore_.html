@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetching Data from Fakestore using JavaScript Ajax</title>
+
+    <script>
+        function GetClick(){
+            var http= new XMLHttpRequest();
+            http.open("get","http://fakestoreapi.com/products",true);
+            http.send();
+            http.onreadystatechange=function(){
+                if(http.readyState==4){
+                    var products=JSON.parse(http.responseText);
+                    products.map(product=>{
+                        var li=document.createElement("li");
+                        li.innerHTML=product.title;
+                        document.querySelector("ol").appendChild(li);
+                    })
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="GetClick()">Get Products</button>
+    <ol>
+
+    </ol>
+</body>
+</html>

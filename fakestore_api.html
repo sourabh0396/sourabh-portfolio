@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fakestore</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        function LoadCategories(){
+            $.ajax({
+                method: "get",
+                url: "http://fakestoreapi.com/products/categories",
+                success: (categories)=>{
+                    categories.unshift("all");
+                    categories.map(category=>{
+                        $(`<option value=${category}>${category.toUpperCase()}</option>`).appendTo("#lstCategories");
+                    })
+                }
+            })
+        }
+
+        function LoadProducts(url){
+            $("main").html("");
+            $.ajax({
+                method:"get",
+                url: url,
+                success: (products)=>{
+                products.map(product=> {
+                        $(
+                        `
+                        <div class="card m-2 p-2" style="width:200px">
+                        <img src=${product.image} class="card-img-top" height="120">
+                        <div class="card-header">
+                            <p>${product.title}</p>
+                        </div>
+                        <div class="card-body">
+                            <dl>
+                                <dt>Price</dt>
+                                <dd>${product.price}</dd>
+                                <dt>Rating</dt>
+                                <dd><span class="bi bi-star-fill text-success"></span> ${product.rating.rate} [${product.rating.count}] </dd>
+                            </dl>
+                        </div>
+                            <div class="card-footer">
+                                <button name=${product.id} id="btnAdd" class="btn btn-danger w-100">
+                                    <span class="bi bi-cart3"></span> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                        `).appendTo("main");
+                    })
+                }
+            })
+        }
+
+        $(function(){
+            LoadCategories();
+            LoadProducts("http://fakestoreapi.com/products");
+
+            $("#lstCategories").change(()=>{
+                if($("#lstCategories").val()=="all") {
+                 LoadProducts("http://fakestoreapi.com/products");
+                } else {
+                 LoadProducts(`http://fakestoreapi.com/products/category/${$("#lstCategories").val()}`);
+                }
+            });
+
+            var cartItems = [];
+
+            function GetCartCount(){
+               $("#count").html(cartItems.length);
+            }
+            GetCartCount();
+
+            $(document).on("click","#btnAdd", (e)=>{
+                // e.target.name
+                // $.ajax()
+                $.ajax({
+                     method: "get",
+                     url: `http://fakestoreapi.com/products/${e.target.name}`,
+                     success: (product)=> {
+                         cartItems.push(product);
+                         alert("Item Added to Cart");
+                         GetCartCount();
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body class="container-fluid">
+    <header class="p-4 d-flex justify-content-between bg-dark text-white border border-2 m-2">
+        <div class="h3">Fakestore</div>
+        <div>
+            <span class="me-3">Electronics</span>
+            <span class="me-3">Men's</span>
+            <span class="me-3">Women's</span>
+            <span class="me-3">Jewelery</span>
+        </div>
+        <div>
+            <button class="btn btn-light position-relative">
+                <span class="bi bi-cart4"> <span class="badge rounded rounded-circle bg-danger text-white position-absolute" id="count">0</span> </span>
+            </button>
+        </div>
+    </header>
+    <section class="mt-4 row">
+         <nav class="col-2">
+            <label class="form-label fw-bold">Select Category</label>
+            <div>
+                <select class="form-select" id="lstCategories"></select>
+            </div>
+         </nav>
+         <main class="col-10 d-flex flex-wrap" style="height: 500px; overflow: auto;">
+
+        </main>
+    </section>
+</body>
+</html>

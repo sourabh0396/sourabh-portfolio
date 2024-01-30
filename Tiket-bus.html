@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded Style</title>
+    <style type="text/css" media="screen">
+        .container{
+            border: 1px solid black;
+            padding: 10px;
+            background-color: lightcyan;
+            height: 250px;
+        }
+        h1{
+            text-align: center;
+        }
+        dt{
+            background-color: darkcyan;
+            color: white;
+            margin-top: 35px;
+            padding: 2px;
+        }
+        img{
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+    </style>
+    <style type="text/css" media="print">
+        .ciontainer{
+            background-color: white;
+        }
+        dt{
+            background-color: white;
+            color: black;
+        }
+        img, button{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ticket</h1>
+        <img src="/assets/img/bus.png" width="400" height="200">
+        <dl>
+            <dt>Departure</dt>
+            <dd>20_AUG-2023</dd>
+            <dt>Time</dt>
+            <dd>20:20</dd>
+        </dl>
+        <button>Print</button>
+    </div>
+</body>
+</html>

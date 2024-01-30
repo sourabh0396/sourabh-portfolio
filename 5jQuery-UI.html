@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQury UI</title>
+    <link rel="stylesheet" href="../node_modules/jquery-ui/jquery-ui.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/jquery-ui/jquery-ui.js"></script>
+
+    <script>
+        $(function(){
+            $("#topics").accordion();
+            $("#depth").datepicker();
+            $("img").draggable();
+        })
+    </script>
+</head>
+<body>
+
+    <img src="../assets/img/CHKZINGER.jpg" height="200" width="200">
+    <div>
+        Departure:<input type="text" id="depth">
+    </div>
+    <div id="topics">
+        <h2>What is Netflix?</h2>
+        <div>
+            <p>Something About NetFlix</p>
+        </div>
+        <h2>How much does Netflix cost?</h2>
+        <div>
+            <p>Something About Netflix cost</p>
+        </div>
+    </div>
+</body>
+</html>

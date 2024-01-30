@@ -1,0 +1,28 @@
+{
+  "name": "sourabh-portfolio",
+  "version": "1.0.0",
+  "description": "UI Developer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@srexi/purecounterjs": "^1.5.0",
+    "bootstrap": "^5.3.2",
+    "bootstrap-icons": "^1.11.2",
+    "cors": "^2.8.5",
+    "emailjs-com": "^3.2.0",
+    "express": "^4.18.2",
+    "glightbox": "^3.2.0",
+    "jquery": "^3.7.1",
+    "jquery-ean13": "^2.2.5",
+    "jquery-ui": "^1.13.2",
+    "jquery.cookie": "^1.4.1",
+    "scss": "^0.2.4",
+    "swiper": "^11.0.5",
+    "typed.js": "^2.1.0"
+  }
+}

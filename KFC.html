@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> KFC ONLINE </title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  
+
+    <script type="text/javascript">
+        function OrderClick(){
+            document.getElementById("lblCustomer").innerHTML=document.getElementById("txtCustomer").value;
+            document.getElementById("txtMobile").innerHTML=document.getElementById("txtMobile").value;
+
+            var mealName ="";
+            var mealcost =0;
+            
+            var ChickenRoll = document.getElementById("ChickenRoll");
+            var LongerBurger =document.getElementById("LongerBurger");
+
+
+            var imgmeal = document.getElementById("imgmeal");
+
+            if(ChickenRoll.checked){
+                mealName = ChickenRoll.value;
+                mealcost = 119;
+                imgmeal.src = "../public/img/Single Chicken Roll.jpg"; 
+            }
+
+            if(LongerBurger.checked){
+                mealName = LongerBurger.value;
+                mealcost = 219;
+                imgmeal.src = "../public/img/Chicken Longer Burger & 2 Strips Combo.jpg";
+            }
+
+            var adonName = "";
+            var adonCost = 0;
+
+            var LegPc = document.getElementById("LegPc");
+            var Peri10pc = document.getElementById("Peri10pc");
+
+
+
+            if(LegPc.checked){
+                adonName += LegPc.value + "<br>";
+                adonCost = 499;
+                mealcost += adonCost;
+            }
+
+            if(Peri10pc.checked){
+                adonName += Peri10pc.value + "<br>";
+                adonCost = 499;
+                mealcost += adonCost;
+            }
+
+            document.getElementById("lblMeal").innerHTML = mealName;
+            document.getElementById("lblAdon").innerHTML = adonName;
+            document.getElementById("lblTotal").innerHTML = `&#8377 ${mealcost}`;
+        }
+    </script>
+
+</head>
+<body class="container-fluid">
+    <header>
+        <img src="../public/img/KFC-online.JPG" width="100%" height="300">
+    </header>
+    <section>
+        <div class="accordion" id="kfc">
+
+            <!-- Customer Catogory -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button data-bs-target="#customer" data-bs-toggle="collapse" class="btn btn-danger w-100">Customer Details</button>
+                </div>
+                <div class="accordion-collapse collapse" id="customer" data-bs-parent="#kfc">
+                    <div class="accordion-body bg-danger text-white mt-2">
+                        <dl>
+                            <dt>Customer Name</dt>
+                            <dd><input type="text" id="txtCustomer" class="form-control"></dd>
+                            <dt>Phone Number</dt>
+                            <dd><input type="text" id="txtMobile" class="form-control"></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <!-- Meals Category -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button data-bs-target="#meal" data-bs-toggle="collapse" class="btn btn-danger w-100">Select your meal</button>
+                </div>
+                <div class="accordion-collapse collapse" id="meal" data-bs-parent="#kfc">
+                    <div class="accordion-body">
+                        <div class="row text-center">
+                            <div class="col">
+                                <img src="../public/img/Single Chicken Roll.jpg" width="50%" height="250">
+                                <div>
+                                    <div class="h3 ">Single Chicken Roll</div>
+                                    <input type="radio" id="ChickenRoll" name="meal" value="Single Chicken Roll" class="form-check-input"><label class="form-check-label fw-bold"> &#8377; 119/- </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <img src="../public/img/Chicken Longer Burger & 2 Strips Combo.jpg " width="50%" height="250">
+                                <div>
+                                    <div class="h3 ">Chicken Longer Burger <br> & 2 Strips Combo</div>
+                                    <input type="radio" id="LongerBurger" name="meal" value="Chicken Longer Burger & 2 Strips Combo" class="form-check-input"><label class="form-check-label fw-bold"> &#8377; 219/- </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ADD on Catogory -->
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button data-bs-target="#adon" data-bs-toggle="collapse" class="btn btn-danger w-100">Select your meal</button>
+                </div>
+                <div class="accordion-collapse collapse" id="adon" data-bs-parent="#kfc">
+                    <div class="accordion-body">
+                        <div class="row text-center">
+                            <div class="col">
+                                <img src="../public/img/5 Leg Pc & 2 Dips Bucket.jpg" width="50%" height="250">
+                                <div>
+                                    <div class="h3 ">5 Leg Pc & 2 Dips Bucket</div>
+                                    <input type="checkbox" id="LegPc" name="adon" value="5 Leg Pc & 2 Dips Bucket" class="form-check-input"><label class="form-check-label fw-bold"> &#8377; 519/- </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <img src="../public/img/Peri Peri 10 Pc Chicken Strips & 2 Dips.jpg" width="50%" height="250">
+                                <div>
+                                    <div class="h3 ">Peri Peri 10 Pc Chicken Strips & 2 Dips</div>
+                                    <input type="checkbox" id="Peri10pc" name="adon" value="Peri Peri 10 Pc Chicken Strips & 2 Dips" class="form-check-input"><label class="form-check-label fw-bold"> &#8377; 499/- </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <button onclick="OrderClick()" data-bs-target="#summary" data-bs-toggle="modal" class="btn btn-danger w-100">Place Order</button>
+
+        <div class="modal fade" id="summary">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Your Bill Summary</h3>
+                        <button class="btn btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <dl>
+                                    <dt>Customer</dt>
+                                    <dd id="lblCustomer"></dd>
+                                    <dt>Mobile</dt>
+                                    <dd id="lblMobile"></dd>
+                                    <dt>Meal</dt>
+                                    <dd id="lblMeal"></dd>
+                                    <dt>Adon</dt>
+                                    <dd id="lblAdon"></dd>
+                                    <dt>Total</dt>
+                                    <dd id="lblTotal"></dd>
+                                </dl>
+                            </div>
+                            <div class="col">
+                                <img id="imgmeal" width="100%" height="200" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
